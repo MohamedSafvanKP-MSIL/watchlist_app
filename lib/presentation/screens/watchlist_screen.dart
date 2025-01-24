@@ -53,13 +53,6 @@ class _WatchlistScreenState extends State<WatchlistScreen> {
                     return ListTile(
                       key: ValueKey(symbol.name),
                       title: Text(symbol.name),
-                      // onLongPress: () {
-                      //   final isEditMode = state.isEditMode ?? false;
-                      //   print('onLongPress : $isEditMode');
-                      //   context
-                      //       .read<WatchlistBloc>()
-                      //       .toggleEditMode(!isEditMode);
-                      // },
                     );
                   }).toList(),
                 )),
