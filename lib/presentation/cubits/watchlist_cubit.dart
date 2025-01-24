@@ -9,6 +9,9 @@ part 'watchlist_state.dart';
 class WatchlistBloc extends Cubit<WatchlistState> {
   final MockWatchlistRepositoryImpl _repository;
 
+  // local persist for the order of watchlist
+  final Map<String, List<SymbolItem>> _watchlistSymbolMap = {};
+
   WatchlistBloc(this._repository) : super(const WatchlistState()) {
     switchGroup(_repository.getGroups().first);
   }
@@ -21,7 +24,8 @@ class WatchlistBloc extends Cubit<WatchlistState> {
 
   void switchGroup(String groupName) {
     emit(state.copyWith(loadingStatus: LoadingStatus.loading));
-    final symbols = _repository.getSymbolsByGroup(groupName);
+    final symbols = _watchlistSymbolMap[groupName] ??
+        _repository.getSymbolsByGroup(groupName);
     emit(state.copyWith(
         symbols: symbols,
         groupName: groupName,
@@ -34,10 +38,12 @@ class WatchlistBloc extends Cubit<WatchlistState> {
   }
 
   void reorderSymbols(int oldIndex, int newIndex) {
-    final symbols = state.symbols;
-    if (symbols != null) {
+    if (state.symbols != null) {
+      final symbols = List<SymbolItem>.of(state.symbols!);
       final symbol = symbols.removeAt(oldIndex);
       symbols.insert(newIndex > oldIndex ? newIndex - 1 : newIndex, symbol);
+
+      _watchlistSymbolMap[state.groupName!] = symbols;
       emit(state.copyWith(symbols: symbols));
     }
   }

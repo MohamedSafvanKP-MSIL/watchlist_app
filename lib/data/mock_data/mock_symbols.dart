@@ -1,19 +1,24 @@
 
 const List<Map<String, dynamic>> MOCK_DATA = [
   {
-    'watchListName': 'WatchList 1',
+    'watchListName': 'Stocks',
     'symbols': [
-      {'name': 'AAPL'},
-      {'name': 'GOOG'},
-      {'name': 'AMZN'}
+      {'name': 'TCS'},
+      {'name': 'NOCL'},
+      {'name': 'TATA STEEL'},
+      {'name': 'TATA POWER'},
+      {'name': 'IDEA'},
+      {'name': 'COAL INDIA'},
     ]
   },
   {
-    'watchListName': 'WatchList 2',
+    'watchListName': 'Futures',
     'symbols': [
-      {'name': 'TSLA'},
-      {'name': 'MSFT'},
-      {'name': 'META'}
+      {'name': 'NIFTY 23500 CE'},
+      {'name': 'NIFTY 23000 CE'},
+      {'name': 'NIFTY 23000 PE'},
+      {'name': 'BANK NIFTY 48400 CE'},
+      {'name': 'FIN NIFTY 22250 CE'},
     ]
   }
 ];
