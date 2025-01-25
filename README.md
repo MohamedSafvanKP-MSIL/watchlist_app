@@ -2,16 +2,21 @@
 
 A new Flutter project.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 # watchlist_app
+
+
+## Features
+
+- **Home Screen**: Home Screen with Bottom Navigation Bar.
+    - Switch between different watchlists
+- **Search Bar**:
+    - Contains default symbols
+    - Filter and display matching symbols while typing
+- **List of Symbols**:
+    - Long press a symbol to enter edit mode
+    - Rearrange symbols in edit mode
+
+please find the working sample video attached:
+
+https://github.com/user-attachments/assets/56e85e1e-937b-49d3-a778-b7379bfc4981
+
