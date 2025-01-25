@@ -21,15 +21,14 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (_) => WatchlistBloc(
-                MockWatchlistRepositoryImpl()), // Your existing WatchlistBloc
-          ),
-          BlocProvider(
-            create: (_) => BottomNavigationCubit(), // New BottomNavigationCubit
-          ),
-        ],
+          providers: [
+            BlocProvider(
+              create: (_) => WatchlistBloc(MockWatchlistRepositoryImpl()), // Your existing WatchlistBloc
+            ),
+            BlocProvider(
+              create: (_) => BottomNavigationCubit(), // New BottomNavigationCubit
+            ),
+          ],
         child: const HomeScreen(),
       ),
     );

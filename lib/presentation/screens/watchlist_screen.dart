@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:watchlist_test/core/enums/common.dart';
+import 'package:watchlist_test/presentation/screens/search_screen.dart';
 
 import '../cubits/watchlist/watchlist_cubit.dart';
 
@@ -30,7 +31,10 @@ class _WatchlistScreenState extends State<WatchlistScreen> {
             icon: const Icon(Icons.search),
             onPressed: () {
               context.read<WatchlistBloc>().handleSearchOrGroupChange();
-              // Navigate to search screen
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SearchScreen()),
+              );
             },
           ),
         ],
@@ -61,14 +65,14 @@ class _WatchlistScreenState extends State<WatchlistScreen> {
                     return Card(
                       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                       key: ValueKey(symbol.name),
-                      elevation: 2, // Adds shadow to the card
+                      elevation: 2,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10), // Rounded corners for the border
+                        borderRadius: BorderRadius.circular(10),
                       ),
                       child: ListTile(
-                        contentPadding: const EdgeInsets.all(6) ,// Adds padding inside the ListTile
+                        contentPadding: const EdgeInsets.all(6) ,
                         title: Text(symbol.name),
-                        tileColor: Colors.white, // Background color of the tile
+                        tileColor: Colors.white,
                       ),
                     );
                   },
