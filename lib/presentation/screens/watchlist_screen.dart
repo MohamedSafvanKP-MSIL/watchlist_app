@@ -24,10 +24,10 @@ class _WatchlistScreenState extends State<WatchlistScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Watchlist'),
+        title: const Text('Watchlist'),
         actions: [
           IconButton(
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
             onPressed: () {
               context.read<WatchlistBloc>().handleSearchOrGroupChange();
               // Navigate to search screen
@@ -42,6 +42,7 @@ class _WatchlistScreenState extends State<WatchlistScreen> {
         builder: (BuildContext context, WatchlistState state) {
           if (state.loadingStatus.isSuccess) {
             return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 WatchlistTabs(
                   watchlists: state.groups ?? [],
@@ -76,16 +77,22 @@ class WatchlistTabs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: watchlists.map((group) {
-        return ElevatedButton(
-          onPressed: () {
-            context.read<WatchlistBloc>().handleSearchOrGroupChange();
-            context.read<WatchlistBloc>().switchGroup(group);
-          },
-          child: Text(group),
-        );
-      }).toList(),
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: watchlists.map((group) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 6),
+            child: ElevatedButton(
+              onPressed: () {
+                context.read<WatchlistBloc>().handleSearchOrGroupChange();
+                context.read<WatchlistBloc>().switchGroup(group);
+              },
+              child: Text(group),
+            ),
+          );
+        }).toList(),
+      ),
     );
   }
 }
