@@ -1,5 +1,5 @@
 
-const List<Map<String, dynamic>> MOCK_DATA = [
+const List<Map<String, dynamic>> mockData = [
   {
     'watchListName': 'Stocks',
     'symbols': [

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubits/search/search_cubit.dart';
-import '../cubits/watchlist/watchlist_cubit.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});

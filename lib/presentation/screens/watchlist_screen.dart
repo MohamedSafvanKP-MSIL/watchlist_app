@@ -63,7 +63,7 @@ class _WatchlistScreenState extends State<WatchlistScreen> {
                   itemBuilder: (context, index) {
                     final symbol = state.symbols![index];
                     return Card(
-                      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                       key: ValueKey(symbol.name),
                       elevation: 2,
                       shape: RoundedRectangleBorder(
