@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:watchlist_test/core/enums/common.dart';
 
-import '../cubits/watchlist_cubit.dart';
+import '../cubits/watchlist/watchlist_cubit.dart';
 
 class WatchlistScreen extends StatefulWidget {
   const WatchlistScreen({super.key});
@@ -48,14 +48,30 @@ class _WatchlistScreenState extends State<WatchlistScreen> {
                   watchlists: state.groups ?? [],
                 ),
                 Expanded(
-                    child: ReorderableListView(
-                  onReorder: context.read<WatchlistBloc>().reorderSymbols,
-                  children: state.symbols!.map((symbol) {
-                    return ListTile(
+                    child: ReorderableListView.builder(
+                  shrinkWrap: true,
+                  itemCount: state.symbols?.length ?? 0,
+                  onReorder: (oldIndex, newIndex) {
+                    context
+                        .read<WatchlistBloc>()
+                        .reorderSymbols(oldIndex, newIndex);
+                  },
+                  itemBuilder: (context, index) {
+                    final symbol = state.symbols![index];
+                    return Card(
+                      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                       key: ValueKey(symbol.name),
-                      title: Text(symbol.name),
+                      elevation: 2, // Adds shadow to the card
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10), // Rounded corners for the border
+                      ),
+                      child: ListTile(
+                        contentPadding: const EdgeInsets.all(6) ,// Adds padding inside the ListTile
+                        title: Text(symbol.name),
+                        tileColor: Colors.white, // Background color of the tile
+                      ),
                     );
-                  }).toList(),
+                  },
                 )),
               ],
             );
