@@ -1,6 +1,6 @@
 # watchlist_test
 
-A new Flutter project.
+A new watchlist_test Flutter project.
 
 # watchlist_app
 
